@@ -1,14 +1,13 @@
-import { stringify } from 'querystring';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 const Tags = () => {
-  const [butons_unselected, setButons_unselected] = useState(['Button 1', 'Bu', 'Button 3']);// Example array of strings
-  const [butons_selected, setButons_selected] = useState([]);
-  const [filterText, setFilterText] = useState('');
+  const [butons_unselected, setButons_unselected] = useState<string[]>(['Button 1', 'Bu', 'Button 3']);// Example array of strings
+  const [butons_selected, setButons_selected] = useState<string[]>([]);
+  const [filterText, setFilterText] = useState<string>('');
   const filteredStrings = butons_unselected.filter(str => str.toLowerCase().includes(filterText.toLowerCase()));
 
-  const changeStateSelected = (value,button) => {
+  const changeStateSelected = (value : number, button : string) => {
 
     if(value==0){
       const tempUnSelected = [...butons_unselected]
@@ -26,12 +25,12 @@ const Tags = () => {
   }
 
 
-  const addTag = (tagName) => {
+  const addTag = (tagName : string) => {
     if(localStorage.getItem('myTagList')==null){
       localStorage.setItem('myTagList', JSON.stringify([tagName]))
       setButons_selected([tagName,...butons_selected])
     }else{
-      const tagListTemp = JSON.parse(localStorage.getItem('myTagList'));
+      const tagListTemp = JSON.parse(localStorage.getItem('myTagList')!);
       console.log(tagListTemp)
       localStorage.setItem('myTagList', JSON.stringify([...tagListTemp, tagName]))
       setButons_selected([tagName,...butons_selected])
@@ -41,7 +40,7 @@ const Tags = () => {
   useEffect(() => {
     if(localStorage.getItem('myTagList')==null){
     }else{
-      const temp =JSON.parse(localStorage.getItem('myTagList'))
+      const temp =JSON.parse(localStorage.getItem('myTagList')!)
       setButons_unselected([...butons_unselected,...temp])
     }
   }, []);
