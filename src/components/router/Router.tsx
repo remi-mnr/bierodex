@@ -41,6 +41,10 @@ const InnerRouter = () => {
           path: 'Tags',
           element: <Tags />
         },
+        {
+          index: true,
+          element: <MemoBiere />
+        },
       ]
     }
   ];
