@@ -1,3 +1,4 @@
+import Rank from "components/rank/Rank";
 import { useState } from "react";
 
 const MemoBiere = () => {
@@ -21,6 +22,7 @@ const afficherNom = (nom: any) => {
           Outlined
         </label>
       </div>
+      <Rank></Rank>
       <button className="btn btn-outline btn-primary" onClick={()=> afficherNom(bite)}>Success</button>
 
     </>
