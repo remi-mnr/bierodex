@@ -5,6 +5,7 @@ import { AppBar } from '../shared/AppBar';
 const Loading = () => <p className="p-4 w-full h-full text-center">Loading...</p>;
 
 const MemoBiere = lazy(() => import('../screen/MemoBiere'));
+const Tags = lazy(() => import('../Tags/tags'));
 
 function Layout() {
   const location = useLocation();
@@ -35,6 +36,10 @@ const InnerRouter = () => {
         {
           path: 'MemoBiere',
           element: <MemoBiere />
+        },
+        {
+          path: 'Tags',
+          element: <Tags />
         },
       ]
     }
